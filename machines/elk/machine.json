@@ -47,7 +47,7 @@
             "shutdown_command": "sudo shutdown -P now",
             "disk_size": 20000,
             "format": "qcow2",
-            "headless": false,
+            "headless": true,
             "accelerator": "kvm",
             "http_directory": "../../common/httpdir",
             "http_port_min": 10082,
@@ -82,7 +82,7 @@
                 "../../common/puppet",
                 "./modules"
             ]
-        }
+        },
         {
             "type": "shell",
             "script": "../../common/shell/remove-local-apt-proxy.sh",
