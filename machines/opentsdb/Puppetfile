@@ -1,0 +1,8 @@
+forge 'forge.puppetlabs.com'
+
+# Install puppetlabs-stdlib from the Forge
+mod 'opentsdb',
+    :git => "https://github.com/timfreund/puppet-opentsdb.git"
+
+# Dependencies
+mod 'puppetlabs/stdlib', '4.3.2'
