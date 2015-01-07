@@ -1,0 +1,10 @@
+Ceph doesn't like IP address changes, and that's what would happen if
+we completely built this appliance and then you installed it in your
+own hosting environment.  To get around that problem, we've included a
+script to finish the configuration, ceph-configure-on-first-boot.sh.
+Please run it to configure Ceph.
+
+The included site.pp file configures a Ceph OSD process to use a
+dedicated virtual disk at /dev/vdb.  Please ensure that you have a
+second disk attached to this virtual machine and update the path if
+necessary.

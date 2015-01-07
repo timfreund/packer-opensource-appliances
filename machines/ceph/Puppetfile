@@ -1,0 +1,9 @@
+forge 'forge.puppetlabs.com'
+
+mod 'ceph',
+    :git => "https://github.com/stackforge/puppet-ceph.git"
+
+# Dependencies
+mod 'puppetlabs/apt', '1.4.2'
+mod 'puppetlabs/inifile', '1.2.0'
+mod 'puppetlabs/stdlib', '4.3.2'
