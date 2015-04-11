@@ -1,0 +1,7 @@
+forge 'forge.puppetlabs.com'
+
+# Sample entries
+# mod 'elasticsearch/elasticsearch', '0.4.0'
+# mod 'elk',
+#     :git => "https://github.com/timfreund/puppet-elk.git"
+
