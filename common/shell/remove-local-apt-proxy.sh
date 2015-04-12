@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-sed -e 's/Acquire::http::Proxy/# Acquire::http::Proxy/' -i /etc/apt/apt.conf
+if [ -f /etc/apt/apt.conf ]
+then
+    sed -e 's/Acquire::http::Proxy/# Acquire::http::Proxy/' -i /etc/apt/apt.conf
+fi
+
