@@ -32,6 +32,7 @@
             "iso_checksum": "{{ user `checksum` }}",
             "iso_checksum_type": "md5",
             "output_directory": "output/{{user `hostname`}}-vbox",
+            "headless": true,
             "http_directory": "../../common/httpdir",
             "http_port_min": 10082,
             "http_port_max": 10089,
