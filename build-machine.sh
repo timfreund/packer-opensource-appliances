@@ -62,6 +62,11 @@ fi
 cmd="${cmd} machine.json"
 
 cd ${DESTDIR}
+if [ -e output ]
+then
+    rm -rf output
+fi
+
 if [ -e Puppetfile ]
 then
     r10k -v DEBUG puppetfile install
