@@ -10,6 +10,14 @@
         "boot_command-virtualbox": "",
         "boot_command-qemu": "",
 
+        "openstack-username": "",
+        "openstack-api_key": "",
+        "openstack-openstack_provider": "",
+        "openstack-provider": "",
+        "openstack-region": "",
+        "openstack-source_image": "",
+        "openstack-flavor": "2",
+
         "username": "",
         "password": ""
     },
@@ -24,6 +32,18 @@
             "host": "jenkins.vpn.freunds.net",
             "ssh_username": "packer",
             "ssh_password": "packer"
+        },
+        {
+            "type": "openstack",
+            "username": "{{user `openstack-username`}}",
+            "api_key": "{{user `openstack-api_key`}}",
+            "openstack_provider": "rackspace",
+            "provider": "rackspace-us",
+            "region": "IAD",
+            "ssh_username": "root",
+            "image_name": "{{user `hostname`}}",
+            "source_image": "{{user `openstack-source_image`}}",
+            "flavor": "2"
         },
         {
             "type": "qemu",

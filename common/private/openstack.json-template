@@ -1,0 +1,9 @@
+{
+  "openstack-username": "",
+  "openstack-api_key": "",
+  "openstack-openstack_provider": "rackspace",
+  "openstack-provider": "rackspace-us",
+  "openstack-region": "IAD",
+  "openstack-source_image": "6f29d6a6-9972-4ae0-aa80-040fa2d6a9cf",
+  "openstack-flavor": "2"
+}

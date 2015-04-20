@@ -55,6 +55,11 @@ do
     cmd="${cmd} -var-file=../../common/variables-${vf}.json"
 done
 
+for vf in common/private/*json;
+do
+    cmd="${cmd} -var-file=../../${vf}"
+done
+
 if [[ ${BUILDER} != "all" ]]
 then
     cmd="${cmd} -only ${BUILDER}"
