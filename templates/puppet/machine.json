@@ -10,6 +10,14 @@
         "boot_command-virtualbox": "",
         "boot_command-qemu": "",
 
+        "openstack-username": "",
+        "openstack-api_key": "",
+        "openstack-openstack_provider": "",
+        "openstack-provider": "",
+        "openstack-region": "",
+        "openstack-source_image": "",
+        "openstack-flavor": "2",
+
         "username": "",
         "password": ""
     },
@@ -20,29 +28,23 @@
             "export_path": "output/{{user `hostname`}}-docker.tar"
         },
         {
-            "type": "virtualbox-iso",
-            "guest_os_type": "Ubuntu_64",
-            "iso_url": "{{user `iso` }}",
-            "iso_checksum": "{{ user `checksum` }}",
-            "iso_checksum_type": "md5",
-            "output_directory": "output/{{user `hostname`}}-vbox",
-            "http_directory": "../../common/httpdir",
-            "http_port_min": 10082,
-            "http_port_max": 10089,
-            "ssh_host_port_min": 2222,
-            "ssh_host_port_max": 2229,
-            "ssh_username": "{{user `username`}}",
-            "ssh_password": "{{user `password`}}",
-            "ssh_wait_timeout": "90m",
-            "shutdown_command": "sudo shutdown -P now",
-            "boot_command": "{{user `boot_command-virtualbox`}}"
+            "type": "openstack",
+            "username": "{{user `openstack-username`}}",
+            "api_key": "{{user `openstack-api_key`}}",
+            "openstack_provider": "rackspace",
+            "provider": "rackspace-us",
+            "region": "IAD",
+            "ssh_username": "root",
+            "image_name": "{{user `hostname`}}",
+            "source_image": "{{user `openstack-source_image`}}",
+            "flavor": "2"
         },
         {
             "type": "qemu",
             "iso_url": "{{user `iso` }}",
             "iso_checksum": "{{user `checksum` }}",
             "iso_checksum_type": "md5",
-            "output_directory": "output/{{user `hostname`}}-kvm",
+            "output_directory": "output/qemu",
             "ssh_wait_timeout": "30s",
             "shutdown_command": "sudo shutdown -P now",
             "disk_size": 20000,
@@ -62,6 +64,25 @@
             "net_device": "virtio-net",
             "disk_interface": "virtio",
             "boot_command": "{{user `boot_command-qemu`}}"
+        },
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Ubuntu_64",
+            "iso_url": "{{user `iso` }}",
+            "iso_checksum": "{{ user `checksum` }}",
+            "iso_checksum_type": "md5",
+            "output_directory": "output/virtualbox-iso",
+            "headless": true,
+            "http_directory": "../../common/httpdir",
+            "http_port_min": 10082,
+            "http_port_max": 10089,
+            "ssh_host_port_min": 2222,
+            "ssh_host_port_max": 2229,
+            "ssh_username": "{{user `username`}}",
+            "ssh_password": "{{user `password`}}",
+            "ssh_wait_timeout": "90m",
+            "shutdown_command": "sudo shutdown -P now",
+            "boot_command": "{{user `boot_command-virtualbox`}}"
         }
     ],
     "provisioners": [
