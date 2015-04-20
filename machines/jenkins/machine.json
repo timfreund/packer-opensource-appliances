@@ -26,25 +26,6 @@
             "ssh_password": "packer"
         },
         {
-            "type": "virtualbox-iso",
-            "guest_os_type": "Ubuntu_64",
-            "iso_url": "{{user `iso` }}",
-            "iso_checksum": "{{ user `checksum` }}",
-            "iso_checksum_type": "md5",
-            "output_directory": "output/virtualbox-iso",
-            "headless": true,
-            "http_directory": "../../common/httpdir",
-            "http_port_min": 10082,
-            "http_port_max": 10089,
-            "ssh_host_port_min": 2222,
-            "ssh_host_port_max": 2229,
-            "ssh_username": "{{user `username`}}",
-            "ssh_password": "{{user `password`}}",
-            "ssh_wait_timeout": "90m",
-            "shutdown_command": "sudo shutdown -P now",
-            "boot_command": "{{user `boot_command-virtualbox`}}"
-        },
-        {
             "type": "qemu",
             "iso_url": "{{user `iso` }}",
             "iso_checksum": "{{user `checksum` }}",
@@ -69,6 +50,25 @@
             "net_device": "virtio-net",
             "disk_interface": "virtio",
             "boot_command": "{{user `boot_command-qemu`}}"
+        },
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Ubuntu_64",
+            "iso_url": "{{user `iso` }}",
+            "iso_checksum": "{{ user `checksum` }}",
+            "iso_checksum_type": "md5",
+            "output_directory": "output/virtualbox-iso",
+            "headless": true,
+            "http_directory": "../../common/httpdir",
+            "http_port_min": 10082,
+            "http_port_max": 10089,
+            "ssh_host_port_min": 2222,
+            "ssh_host_port_max": 2229,
+            "ssh_username": "{{user `username`}}",
+            "ssh_password": "{{user `password`}}",
+            "ssh_wait_timeout": "90m",
+            "shutdown_command": "sudo shutdown -P now",
+            "boot_command": "{{user `boot_command-virtualbox`}}"
         }
     ],
     "provisioners": [
