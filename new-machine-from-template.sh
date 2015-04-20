@@ -65,3 +65,5 @@ fi
 
 cp -r ${TEMPLATE} ${DESTDIR}
 find ${DESTDIR} -type f -exec sed -e "s/MACHINENAME/${MACHINENAME}/" -i {} \;
+rm ${DESTDIR}/machine.json
+
