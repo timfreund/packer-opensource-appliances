@@ -2,6 +2,7 @@
 
 MACHINENAME=unknown
 MACHINEDIR=`dirname ${0}`/machines
+USETEMPLATEJSON=0
 BUILDER=all
 
 usage()
@@ -72,9 +73,24 @@ then
     rm -rf output
 fi
 
+if [ ! -e machine.json ]
+then
+    USETEMPLATEJSON=1
+    echo "Use the default machine.json for this machine's template"
+    template_name=`cat meta.json  | grep template | sed -e 's/.*": "//' -e 's/"//'`
+    cp ../../templates/${template_name}/machine.json .
+    machine_name=`basename ${PWD}`
+    sed -e "s/MACHINENAME/${machine_name}/" -i machine.json
+fi
+
 if [ -e Puppetfile ]
 then
     r10k -v DEBUG puppetfile install
 fi
 pwd
 $cmd
+
+if [ $USETEMPLATEJSON==1 ]
+then
+    rm machine.json
+fi
