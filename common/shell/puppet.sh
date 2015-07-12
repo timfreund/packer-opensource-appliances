@@ -1,4 +1,4 @@
-version = $1
+version=$1
 
 # Prepare puppetlabs repo
 echo "packer ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/packer
